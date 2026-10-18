@@ -1,4 +1,6 @@
 
+using ComputerShopApi.Models;
+
 namespace ComputerShopApi
 {
     public class Program
@@ -11,6 +13,8 @@ namespace ComputerShopApi
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+            builder.Services.AddDbContext<ComputerShopDbContext>();
+
             builder.Services.AddOpenApi();
 
             builder.Services.AddSwaggerGen();

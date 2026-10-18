@@ -22,6 +22,42 @@ namespace ComputerShopApi.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("ComputerShopApi.Models.Computer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasMaxLength(37)
+                        .HasColumnType("varchar(37)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<double>("Display")
+                        .HasColumnType("double");
+
+                    b.Property<int>("Memory")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("OsId")
+                        .HasMaxLength(36)
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Computers");
+                });
+
             modelBuilder.Entity("ComputerShopApi.Models.Osystem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -31,7 +67,8 @@ namespace ComputerShopApi.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(27)
+                        .HasColumnType("varchar(27)");
 
                     b.Property<DateTime>("RegisterTime")
                         .HasColumnType("datetime(6)");
